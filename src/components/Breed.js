@@ -90,7 +90,7 @@ export const Breed = () => {
         <h1 className="other">Other photos</h1>
         <div className="otherP other">
           {otherPhotos.map((op, i) => (
-            <div className="fav">
+            <div className="fav" key={i+op}>
               <img src={op} alt={i}></img>
             </div>
           ))}
