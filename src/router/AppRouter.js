@@ -22,7 +22,6 @@ import { Top } from '../components/Top';
   });
 
   window.onclick = e => {
-    console.log(e.target.innerText);
     if(e.target.innerText.length >0){
       const selected = breed.filter((b) =>{
         if(b.name.toLowerCase() === e.target.innerText.toLowerCase()){

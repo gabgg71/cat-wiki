@@ -9,7 +9,6 @@ export const CatSearch = () => {
   let list;
 
   const look = (e) => {
-    console.log(e.target.value.length);
     if (e.target.value.length === 0) {
       setShow(false);
       return false;
