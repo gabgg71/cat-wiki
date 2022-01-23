@@ -1,48 +1,72 @@
+import { useContext } from "react";
+import { useState } from "react/cjs/react.development";
+import { userContext } from "../hooks/userContext";
+
 export const CatSearch = () => {
+  const { breed } = useContext(userContext);
+  const searched = breed.slice(0, 4);
+  const [show, setShow] = useState(false);
+  let list;
+
+  const look = (e) => {
+    console.log(e.target.value.length);
+    if (e.target.value.length === 0) {
+      setShow(false);
+      return false;
+    }
+    setShow(true);
+
+    list = document.querySelector("ul");
+
+    if (list !== null) {
+      let filtrado = breed.filter((b) =>
+        b.name.toLowerCase().startsWith(e.target.value.toLowerCase())
+      );
+      let algo = filtrado.map((el) => `<li>${el.name}</li>`);
+      algo.length > 0
+        ? (list.innerHTML = algo.reduce(
+            (previous, current) => previous + current
+          ))
+        : (list.innerHTML = `<li>0 coincidences</li>`);
+    }
+  };
+
   return (
     <>
       <div className="mainCat">
         <img
-          src="https://cdn.pixabay.com/photo/2016/07/10/11/55/cat-1507600_960_720.jpg"
+          src="https://github.com/gabgg71/cat-wiki/blob/main/public/HeroImagemd.png?raw=true"
           className="mainImage"
+          alt="mainImage"
         ></img>
-        <h3>Catwiki</h3>
         <div className="limite">
+          <img
+            src="https://raw.githubusercontent.com/gabgg71/cat-wiki/8d15e17e89d7c38cee38465cd337fafe2d17cfde/public/CatwikiLogo.svg"
+            alt="logo"
+            className="l-white"
+          ></img>
           <p className="white">Get to know more about your cat breed</p>
-          <input placeholder=" Enter your breed "></input>
+          <input placeholder=" Enter your breed " onInput={look}></input>
+          {show && <ul></ul>}
         </div>
       </div>
       <div className="discover">
         <p className="ord">Most Searched Breeds</p>
         <div className="fl">
-        <b>66+ Breeds For you to discover</b>
-        <a
-          href="https://devchallenges.io/challenges/f4NJ53rcfgrP6sBMD2jt"
-          className="more"
-        >
-          SEE MORE
-          <i class="material-icons">arrow_right_alt</i>
-        </a>
+          <b className="big">66+ Breeds For you to discover</b>
+          <a href="/searched" className="more">
+            SEE MORE
+            <i className="material-icons">arrow_right_alt</i>
+          </a>
         </div>
-        </div>
-        <div className="flex">
-          <div className="fav">
-            <img src="https://cdn.pixabay.com/photo/2016/07/10/11/55/cat-1507600_960_720.jpg"></img>
-            <a>Bengal </a>
+      </div>
+      <div className="flex">
+        {searched.map((s, i) => (
+          <div className="fav" key={s.id}>
+            <img src={s.image.url} alt={s.id + i}></img>
+            <p>{s.name} </p>
           </div>
-          <div className="fav">
-            <img src="https://cdn.pixabay.com/photo/2016/07/10/11/55/cat-1507600_960_720.jpg"></img>
-            <a>Bengal </a>
-          </div>
-          <div className="fav">
-            <img src="https://cdn.pixabay.com/photo/2016/07/10/11/55/cat-1507600_960_720.jpg"></img>
-            <a>Bengal </a>
-          </div>
-          <div className="fav">
-            <img src="https://cdn.pixabay.com/photo/2016/07/10/11/55/cat-1507600_960_720.jpg"></img>
-            <a>Bengal </a>
-          </div>
-        
+        ))}
       </div>
     </>
   );

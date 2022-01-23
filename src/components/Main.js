@@ -1,14 +1,11 @@
-import {Nav} from './Nav';
-import { CatSearch } from './CatSearch';
-import { Info } from './Info';
-import { Footer } from './Footer';
+import { CatSearch } from "./CatSearch";
+import { Info } from "./Info";
+
 export const Main = () => {
   return (
     <>
-      <Nav />
-      <CatSearch/>
-      <Info/>
-      <Footer/>
+      <CatSearch />
+      <Info />
     </>
   );
 };
