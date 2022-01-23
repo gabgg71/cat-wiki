@@ -56,7 +56,6 @@ export const CatSearch = () => {
           <b className="big">66+ Breeds For you to discover</b>
           <a href="/searched" className="more">
             SEE MORE
-            <i className="material-icons">arrow_right_alt</i>
           </a>
         </div>
       </div>
