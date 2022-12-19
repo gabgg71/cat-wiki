@@ -12,6 +12,17 @@ b {
   background-color: rgb(105, 80, 80);
 }
 
+.vote{
+  color: rgb(105, 80, 80);
+  border-radius: 10px;
+  padding: 1%;
+}
+
+.vote:hover{
+  background-color: rgb(105, 80, 80);
+  color: white;
+}
+
 .grey {
   background-color: rgb(211, 209, 209);
 }

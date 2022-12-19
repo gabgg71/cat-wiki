@@ -61,7 +61,8 @@ export const CatSearch = () => {
       <div className="flex">
         {searched.map((s, i) => (
           <div className="fav" key={s.id}>
-            <img src={s.image.url} alt={s.id + i}></img>
+            <img src={"https://cdn2.thecatapi.com/images/"+s.reference_image_id+".jpg"} alt={s.id + i}></img>
+            
             <p>{s.name} </p>
           </div>
         ))}

@@ -10,7 +10,7 @@ export const Top = () => {
       {searched.map((s, i) => (
           <div className="flexi">
             <div className="fav">
-              <img src={s.image.url} alt={s.name}></img>
+              <img src={"https://cdn2.thecatapi.com/images/"+s.reference_image_id+".jpg"} alt={s.name}></img>
             </div>
             <div className="about">
               <b className="big">{i + 1}. </b>

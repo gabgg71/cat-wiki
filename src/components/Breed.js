@@ -54,23 +54,22 @@ export const Breed = () => {
       `https://api.thecatapi.com/v1/images/search?breed_ids=${id}`,
       {}
     );
-    const body = await resp.json();
-    setSelected(body[0].breeds[0]);
-    let image_id = body[0].breeds[0].reference_image_id;
-    const resImage = await fetchSinToken(
-      `https://api.thecatapi.com/v1/images/${image_id}`,
+    let body = await resp.json();
+    setImageU(body[0].url);
+    const respu = await fetchSinToken(
+      `https://api.thecatapi.com/v1/images/${body[0].id}`,
       {}
     );
-    const image = await resImage.json();
-    setImageU(image.url);
+    body = await respu.json();
+    setSelected(body.breeds[0]);
     const resPhotos = await fetchSinToken(
       `https://api.thecatapi.com/v1/images/search?breed_id=${id}&limit=8`,
       {}
     );
     const otherP = await resPhotos.json();
-    image_id = otherP.map((ph) => ph.url);
-    setPhotos(image_id);
+    setPhotos(otherP.map((ph) => ph.url));
   });
+  //<button className="vote">Vote for this cat</button>
   return (
     <>
       <div className="description">
@@ -79,6 +78,7 @@ export const Breed = () => {
         </div>
         <div className="text">
           <h1>{selected.name}</h1>
+          
           <p>{selected.description}</p>
 
           {items.map((item, i) => (
