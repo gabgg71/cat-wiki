@@ -8,7 +8,7 @@
 
 <div align="center">
   <h3>
-    <a href="https://cat-wiki-v.herokuapp.com/">
+    <a href="https://cat-wiki-amber.vercel.app/">
       Demo
     </a>
     <span> | </span>
@@ -40,7 +40,7 @@
 
 
 - Where can I see your demo?
-https://cat-wiki-v.herokuapp.com/
+https://cat-wiki-amber.vercel.app/
 
 
 ### Built With
